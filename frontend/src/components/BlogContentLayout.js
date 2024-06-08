@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import BlogContent from './BlogContent'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BlogSkeletonLoading from './BlogSkeletonLoading';
 
 export default function BlogContentLayout() {
@@ -14,7 +14,7 @@ export default function BlogContentLayout() {
         const fetchBlog = async () => {
             setisLoading(true);
             try {
-                const response = await fetch(`http://localhost:4500/api/${blogId}`)
+                const response = await fetch(`https://blog-mern-e1ne.onrender.com/api/${blogId}`)
                 const data = await response.json()
                 if (!response.ok) {
                     return setError(true)
@@ -48,7 +48,7 @@ export default function BlogContentLayout() {
     return (
         <>
             <div className="home">
-                <h2 className="logo">JAYKAY BLOG</h2>
+                <Link to="/"><h2 className="logo">JAYKAY BLOG</h2></Link>
                 {isloading && <BlogSkeletonLoading />}
                 {blog && <BlogContent blog={blog} />}
                 {errorMain && <div className='error-box'>

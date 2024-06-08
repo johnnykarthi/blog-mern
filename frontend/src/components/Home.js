@@ -34,7 +34,7 @@ export default function Home() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:4500/api?page=${pageNumber}&limit=7`);
+                const response = await fetch(`https://blog-mern-e1ne.onrender.com/api?page=${pageNumber}&limit=7`);
                 const json = await response.json();
                 if(json.result.length === 0) return setHasmore(false);
                 setBlogPost(prev => [...prev,...json.result]);
@@ -90,7 +90,7 @@ export default function Home() {
                     } else {
                         return (
                             <div>
-                            <Link to={`/${blog.blogId}`}>
+                            <Link to={`/blog/${blog.blogId}`}>
                             <div className="blog-post">
                                 <p className="post-title">{blog.title}</p>
                                 <div className="tag-box">{blog.tags.map((tag) => (

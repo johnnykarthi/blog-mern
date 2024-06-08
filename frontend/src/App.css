@@ -17,6 +17,10 @@ body{
     --title-color: #00B3BE;
 }
 
+a{
+    text-decoration: none;
+}
+
 .logo {
     font-family: 'Roboto',sans-serif;
     font-weight: 500;
