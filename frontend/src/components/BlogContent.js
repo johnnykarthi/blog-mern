@@ -52,26 +52,31 @@ export default function BlogContent({ blog }) {
     <>
       <div className="main">
         <p className="main-title">{blog.title}</p>
-        <h6 className="main-date">Last Updated : {format(new Date(blog.updatedAt), 'dd MMM, yyyy')}</h6>
+        <h6 className="main-date">Last Updated : {format(new Date(blog.updatedAt), 'dd MMM, yyyy')} <br />Author : {blog.author}</h6>
         {blog.tags.map((tag) => (
           <span className="tag">{tag}</span>
         ))}
         <div className="icon-box">
           <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target='_blank' rel="noreferrer" ><span className="facebook"><i className="bi bi-facebook"></i></span></a>
           <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`} target='_blank' rel="noreferrer" ><span className="whatsapp"><i className="bi bi-whatsapp"></i></span></a>
-          <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`} target='_blank' rel="noreferrer" ><span className="linkedin"><i className="bi bi-linkedin"></i></span></a>
+          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target='_blank' rel="noreferrer" ><span className="linkedin"><i className="bi bi-linkedin"></i></span></a>
           <a href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURIComponent(blog.title)}`} target='_blank' rel="noreferrer"><span className="twitter"><i className="bi bi-twitter-x"></i></span></a>
           <span className="share" onClick={multipleShare}><i className="bi bi-share-fill"></i></span>
         </div>
-        <p className='main-desc'>{blog.description}</p>
-        {blog.videoLink &&  <div className="main-video">
-          <div>
-            <video src={blog.videoLink} width="100%" controls></video>
-          </div>
-          <div className='text-center'>
-            <a href={blog.youtubeLink}>Watch on YouTube</a>
-          </div>
-        </div>}
+
+        {blog.videoLink &&
+          <>
+            <p className='main-desc'>{blog.description}</p>
+            <div className="main-video">
+              <div>
+                <video src={blog.videoLink} width="100%" controls></video>
+              </div>
+              <div className='text-center'>
+                <a href={blog.youtubeLink}>Watch on YouTube</a>
+              </div>
+            </div>
+          </>
+        }
         <div className="content">
           <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]} components={renders} children={blog.markdownContent}></ReactMarkdown>
         </div>

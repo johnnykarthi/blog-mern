@@ -86,7 +86,7 @@ a{
     border-radius: 25px;
     color: #00B3BE;
     margin: 7px;
-    font-size: 13px;
+    font-size: 12px;
     cursor: pointer;
 }
 
@@ -121,8 +121,9 @@ a{
 }
 
 .tag-sm{
-    font-size: 13px;
-    padding: 5px 11px;
+    font-size: 10px;
+    padding: 6px 13px;
+    margin-left: 0px;
 }
 
 .post-title{
@@ -130,7 +131,7 @@ a{
     color: rgba(0, 0, 0,0.6);
     font-weight: 500;
     text-decoration: underline;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tag-box{
@@ -138,7 +139,7 @@ a{
 }
 
 .post-desc{
-   font-size: 16px;
+   font-size: 14px;
    text-align: justify;
    color: rgba(0, 0, 0,.54);
    margin-bottom: .5rem;
@@ -179,7 +180,7 @@ a{
     font-size: 14px;
     font-style: italic;
     margin-bottom:10px ;
-
+    line-height: 25px;
 }
 
 .icon-box{
@@ -400,6 +401,14 @@ a{
     100% {
         background-color: hsl(200, 20%, 95%);
     }
+}
+
+.language-js{
+    font-size: 14px;
+}
+
+.language-java{
+    font-size: 14px;
 }
 
 

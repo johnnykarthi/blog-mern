@@ -14,6 +14,10 @@ const blogSchema = new schema({
         type: String,
         required: true
     },
+    author:{
+        type: String,
+        default: "jaykay"
+    },
     tags:{
         type: Array,
         default: []
