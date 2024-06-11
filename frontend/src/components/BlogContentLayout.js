@@ -33,7 +33,7 @@ export default function BlogContentLayout() {
 
     if (error) {
         errorMain = {
-            url: "404.png",
+            url: "404-2.png",
             message: "404 - Blog not found"
         }
     }
