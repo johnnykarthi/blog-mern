@@ -76,7 +76,7 @@ export default function Home() {
                 {result.map((blog, i) => {
                     if (blogPost.length === i + 1) {
                         return (<div>
-                            <Link to={`/${blog.blogId}`}>
+                            <Link to={`/blog/${blog.blogId}`}>
                            
                             <div className="blog-post" ref={lastBlogPost}>
                                 <p className="post-title">{blog.title}</p>

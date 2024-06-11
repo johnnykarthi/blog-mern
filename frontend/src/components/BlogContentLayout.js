@@ -53,7 +53,7 @@ export default function BlogContentLayout() {
                 {blog && <BlogContent blog={blog} />}
                 {errorMain && <div className='error-box'>
                     <div>
-                        <img src={`../../assets/${errorMain.url}`} alt="" />
+                        <img src={`/assets/${errorMain.url}`} alt="" />
                     </div>
                     <p>{errorMain.message}</p>
                 </div>}
