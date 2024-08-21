@@ -14,7 +14,7 @@ export default function BlogContentLayout() {
         const fetchBlog = async () => {
             setisLoading(true);
             try {
-                const response = await fetch(`https://blog-mern-e1ne.onrender.com/api/${blogId}`)
+                const response = await fetch(`https://jmtg7d4cqzhpvz5gp76vhkz44q0wiebd.lambda-url.ap-south-1.on.aws/api/${blogId}`)
                 const data = await response.json()
                 if (!response.ok) {
                     return setError(true)
