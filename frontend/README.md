@@ -1,7 +1,7 @@
 # Jaykay Blog Frontend
 
-This directory contains the React single-page client for Jaykay Blog. It displays a paginated post
-feed and renders individual Markdown articles fetched from the backend API.
+This directory contains the React 19 and Vite 8 single-page client for Jaykay Blog. It displays a
+paginated post feed and renders individual Markdown articles fetched from the backend API.
 
 ## Features
 
@@ -30,13 +30,13 @@ work after a refresh or direct navigation.
 
 | File | Responsibility |
 | --- | --- |
-| `src/App.js` | Declares the client routes |
-| `src/components/Home.js` | Pagination, infinite scroll, title filtering, and post cards |
-| `src/components/BlogContentLayout.js` | Article fetching, loading state, and error selection |
-| `src/components/BlogContent.js` | Article metadata, media, sharing, and Markdown rendering |
-| `src/components/BlogSkeletonLoading.js` | Article loading placeholder |
-| `src/components/AdminComponent.js` | Future administration page placeholder |
-| `src/components/Tag.js` | Reusable tag component; currently not used by `Home` |
+| `src/App.jsx` | Declares the client routes |
+| `src/components/Home.jsx` | Pagination, infinite scroll, title filtering, and post cards |
+| `src/components/BlogContentLayout.jsx` | Article fetching, loading state, and error selection |
+| `src/components/BlogContent.jsx` | Article metadata, media, sharing, and Markdown rendering |
+| `src/components/BlogSkeletonLoading.jsx` | Article loading placeholder |
+| `src/components/AdminComponent.jsx` | Future administration page placeholder |
+| `src/components/Tag.jsx` | Reusable tag component; currently not used by `Home` |
 | `src/App.css` | Global, article, responsive, error, and skeleton styles |
 
 ## Data flow
@@ -73,8 +73,8 @@ also includes `markdownContent`, `videoLink`, and `youtubeLink`.
 
 The deployed API base URL is currently hard-coded in both:
 
-- `src/components/Home.js`
-- `src/components/BlogContentLayout.js`
+- `src/components/Home.jsx`
+- `src/components/BlogContentLayout.jsx`
 
 For local full-stack development, change both fetch URLs to use:
 
@@ -82,40 +82,38 @@ For local full-stack development, change both fetch URLs to use:
 http://localhost:4000/api
 ```
 
-There is no `REACT_APP_*` environment variable in the current implementation. If configuration is
-refactored later, remember that Create React App only exposes custom browser variables whose names
-start with `REACT_APP_`.
+There is no `VITE_*` environment variable in the current implementation. If configuration is
+refactored later, Vite exposes custom browser variables through `import.meta.env` when their names
+start with `VITE_`.
 
 ## Development
 
 ### Prerequisites
 
-- Node.js and npm (a current LTS release is recommended)
+- Node.js 20.19+ or 22.12+ and npm
 - Access to either the deployed API or a running local backend
 
 Install and start the development server:
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:5173`.
 
 ## Scripts
 
 | Command | Description |
 | --- | --- |
-| `npm start` | Start the Create React App development server |
-| `npm run build` | Create an optimized production build in `build/` |
-| `npm test` | Start Jest in interactive watch mode |
-| `npm run eject` | Permanently expose the Create React App configuration |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create an optimized production build in `dist/` |
+| `npm run preview` | Serve the production build locally for verification |
 
 ## Deployment
 
-For Netlify, use `frontend` as the base directory, `npm run build` as the build command, and
-`frontend/build` as the repository-relative publish directory (or `build` when the base directory is
-already set). The included redirect rule provides SPA route fallback.
+For Netlify, use `frontend` as the base directory. The included `netlify.toml` runs `npm run build`,
+publishes `dist`, and provides the SPA route fallback required by React Router.
 
 ## Known limitations and security notes
 
@@ -127,10 +125,9 @@ already set). The included redirect rule provides SPA route fallback.
   make reconciliation unreliable.
 - The infinite-scroll observer is disconnected before observing a new last item, but it has no
   component-unmount cleanup.
-- The codebase has no application tests even though testing dependencies and the CRA test command
-  are present.
+- The codebase currently has no application tests or test script.
 
 ## Build status
 
-`npm run build` succeeds. The current dependency tree emits warnings about Create React App
-maintenance, an outdated Browserslist database, and missing `parse5` source maps.
+`npm run build` succeeds with Vite 8. The current bundle is approximately 1.2 MB before gzip and
+triggers Vite's large-chunk warning; code splitting can be considered separately.

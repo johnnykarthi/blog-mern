@@ -8,7 +8,7 @@ selected post from Markdown. The Express API stores and retrieves the posts from
 
 ```text
 blog-mern/
-├── frontend/               React 18 single-page application
+├── frontend/               React 19 and Vite 8 single-page application
 │   ├── public/             HTML shell, icons, and error images
 │   └── src/components/     Page and presentation components
 └── backend/                Express and Mongoose REST API
@@ -43,7 +43,7 @@ flowchart LR
 
 | Area | Main packages |
 | --- | --- |
-| Frontend | React 18, React Router 6, Create React App, React Markdown, date-fns |
+| Frontend | React 19, React Router 6, Vite 8, React Markdown, date-fns |
 | Backend | Node.js, Express 4, Mongoose 8, dotenv, CORS |
 | Database | MongoDB |
 | Frontend hosting config | Netlify SPA redirect |
@@ -52,7 +52,7 @@ flowchart LR
 
 ### Prerequisites
 
-- Node.js and npm (a current LTS release is recommended)
+- Node.js 20.19+ or 22.12+ and npm
 - A local MongoDB instance or MongoDB Atlas connection string
 
 ### 1. Start the API
@@ -84,15 +84,15 @@ In a second terminal:
 ```bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
 
-The application opens at `http://localhost:3000`.
+The application opens at `http://localhost:5173`.
 
 > **Important:** the current frontend source calls the deployed AWS Lambda API URL directly. It
 > does not automatically use the local server on port 4000. To test the complete stack locally,
-> replace the API base URL in `Home.js` and `BlogContentLayout.js` with
-> `http://localhost:4000/api`. A future improvement would be to centralize this URL in a React
+> replace the API base URL in `Home.jsx` and `BlogContentLayout.jsx` with
+> `http://localhost:4000/api`. A future improvement would be to centralize this URL in a Vite
 > environment variable.
 
 ## API summary
@@ -120,6 +120,5 @@ schema, request, response, and deployment details.
 
 ## Verification
 
-The frontend production build completes with `npm run build`. Create React App currently reports
-dependency source-map and maintenance warnings during the build. The backend JavaScript files pass
+The frontend production build completes with `npm run build`. The backend JavaScript files pass
 Node's syntax check; integration testing still requires a configured MongoDB database.
